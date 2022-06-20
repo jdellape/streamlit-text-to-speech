@@ -45,7 +45,7 @@ if url:
 
     audio_file = open('test.mp3', 'rb')
     audio_bytes = audio_file.read()
-    audio_file.close()
+    #audio_file.close()
 
     st.audio(audio_bytes, format='audio/mp3')
     #engine.say(contents)
