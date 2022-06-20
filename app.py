@@ -52,6 +52,7 @@ if url:
     audio_file_read = open('article.mp3', 'rb')
     audio_bytes = audio_file_read.read()
     st.audio(audio_bytes, format='audio/mp3')
+    st.write(contents)
     #engine.say(contents)
     #engine.runAndWait()
 
