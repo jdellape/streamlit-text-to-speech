@@ -16,7 +16,7 @@ def content(url):
     #st.write(res)
     soup = BeautifulSoup(res.text,'html.parser')
     text = soup.find_all("p")
-    text = [t.getText().strip() for t in text]
+    text = [t.get_text().strip() for t in text]
     output = " ".join(text)
     return output
 
