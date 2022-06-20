@@ -15,7 +15,7 @@ def content(url):
     res = session.get(url, headers={'User-Agent': 'Mozilla/5.0'})
     #st.write(res)
     soup = BeautifulSoup(res.text,'html.parser')
-    text = soup.find_all("p", text=True)
+    text = soup.find_all("p")
     text = [t.getText().strip() for t in text]
     output = " ".join(text)
     return output
