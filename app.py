@@ -4,6 +4,7 @@ import pyttsx3
 import requests
 from bs4 import BeautifulSoup
 import base64
+from gtts import gTTS
 
 url = st.text_input('paste a url')
 rate_adjustment = st.slider('Speech Rate Adjustment',-50,50)
@@ -30,23 +31,26 @@ def content(url):
 
 if url:
     #print(url)
-    engine = pyttsx3.init()
-    voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[0].id)
-    rate = engine.getProperty('rate')
-    engine.setProperty('rate', rate + rate_adjustment)
+    # engine = pyttsx3.init()
+    # voices = engine.getProperty('voices')
+    # engine.setProperty('voice', voices[0].id)
+    # rate = engine.getProperty('rate')
+    # engine.setProperty('rate', rate + rate_adjustment)
 
     contents = content(url)
     #print(contents)
 
     #save_file(contents)
-    engine.save_to_file(contents, 'test.mp3')
-    engine.runAndWait()
+    # engine.save_to_file(contents, 'test.mp3')
+    # engine.runAndWait()
 
-    audio_file = open('test.mp3', 'rb')
-    audio_bytes = audio_file.read()
+    # audio_file = open('test.mp3', 'rb')
+    # audio_bytes = audio_file.read()
     #audio_file.close()
-
+    aud_file = gTTS(text=contents, lang='en', slow=False)
+    aud_file.save("article.mp3")
+    audio_file_read = open('article.mp3', 'rb')
+    audio_bytes = audio_file_read.read()
     st.audio(audio_bytes, format='audio/mp3')
     #engine.say(contents)
     #engine.runAndWait()
