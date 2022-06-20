@@ -3,6 +3,7 @@ import os
 import pyttsx3
 import requests
 from bs4 import BeautifulSoup
+import base64
 
 url = st.text_input('paste a url')
 rate_adjustment = st.slider('Speech Rate Adjustment',-50,50)
@@ -22,9 +23,9 @@ def content(url):
 #     engine.say(audio)
 #     engine.runAndWait()
 
-def save_file(audio):
-    engine.save_to_file(audio, 'test.mp3')
-    engine.runAndWait()
+# def save_file(audio):
+#     engine.save_to_file(audio, 'test.mp3')
+#     engine.runAndWait()
 
 
 if url:
@@ -38,8 +39,11 @@ if url:
     contents = content(url)
     #print(contents)
 
-    save_file(contents)
-    audio_file = open('test.mp3', 'rb')
+    #save_file(contents)
+    engine.save_to_file(contents, 'new_article.mp3')
+    engine.runAndWait()
+
+    audio_file = open('new_article.mp3', 'rb')
     audio_bytes = audio_file.read()
     audio_file.close()
 
