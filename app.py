@@ -3,7 +3,6 @@ import pyttsx3
 import requests
 from bs4 import BeautifulSoup
 
-
 url = st.text_input('paste a url')
 rate_adjustment = st.slider('Speech Rate Adjustment',-50,50)
 
