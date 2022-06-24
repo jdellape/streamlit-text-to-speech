@@ -2,11 +2,8 @@ import streamlit as st
 import requests
 from bs4 import BeautifulSoup
 from gtts import gTTS
-from stqdm import stqdm
 
 url = st.text_input('paste a url')
-#rate_adjustment = st.slider('Speech Rate Adjustment',-50,50)
-
 
 def get_article_text(url):
     session = requests.Session()
